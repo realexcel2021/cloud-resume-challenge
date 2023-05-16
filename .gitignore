@@ -1,0 +1,7 @@
+/terraform/.terraform/
+/terraform/.terraform.lock.hcl
+/terraform/terraform.tfstate.backup
+/terraform/terraform.tfstate
+/node_modules
+/package-lock.json
+/terraform/lambdas
