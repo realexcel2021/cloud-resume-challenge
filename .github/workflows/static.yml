@@ -20,4 +20,4 @@ jobs:
         
     
     - name: Deploy static site to S3 bucket
-      run: aws s3 sync ./ s3://${{ secrets.S3_BUCKET_NAME }} --delete 
+      run: aws s3 sync ./ s3://cloud-resume-challenge-frontend-bucket-001 --delete 
