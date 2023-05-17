@@ -5,7 +5,7 @@ on:
     branches:
      - master #here we choose to deploy only when a push is detected on the main branch
     paths:
-      - src/frontend
+      - src/frontend/**
      
 
 jobs:
