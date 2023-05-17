@@ -31,7 +31,7 @@ function updateCount(){
 // }
 
 function addCount(){
-    fetch("https://ytwypvaqnk.execute-api.us-east-1.amazonaws.com/dev/views", {
+    fetch("https://mxlsbrzthk.execute-api.us-east-1.amazonaws.com/dev/views", {
         method : "POST",
         body: JSON.stringify(setData),
     })

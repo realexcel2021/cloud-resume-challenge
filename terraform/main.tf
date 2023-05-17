@@ -4,11 +4,34 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "frontend_bucket" {
-    bucket = var.s3_bucket_name
-    policy = file("policy.json")
+    bucket = "cloud-resume-challenge-frontend-bucket-001"
     force_destroy = true
-
+    acl = "public-read"
 }
+
+resource "aws_s3_bucket_policy" "allow_public_access" {
+    bucket = aws_s3_bucket.frontend_bucket.id
+    
+    policy = <<POLICY
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::cloud-resume-challenge-frontend-bucket-001/*"
+            ]
+        }
+    ]
+}
+POLICY
+}
+
 
 resource "aws_s3_bucket_cors_configuration" "frontend_bucket_cors" {
     bucket = aws_s3_bucket.frontend_bucket.id
@@ -23,11 +46,6 @@ resource "aws_s3_bucket_cors_configuration" "frontend_bucket_cors" {
     allowed_methods = ["PUT", "POST"]
     allowed_origins = ["*"]
   }
-}
-
-resource "aws_s3_bucket_acl" "frontend_bucket" {
-    bucket = aws_s3_bucket.frontend_bucket.id
-    acl = "public-read"
 }
 
 resource "aws_s3_bucket_website_configuration" "bucket_config" {
