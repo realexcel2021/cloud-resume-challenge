@@ -1,11 +1,15 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./*.{html,js}"],
+  content: ["./src/frontend/*.{html,js}"],
   theme: {
     extend: {
       colors: {
         lightblue : "#3c4240",
-        graycolor : "#2a3761"
+        graycolor : "#2a3761",
+        'background-c' : '#F5F5F5',
+        'border-brown' : '#666666',
+        'link' : '#C03E03',
+        'line' : '#CCCCCC'
       }
     },
     screens: {
